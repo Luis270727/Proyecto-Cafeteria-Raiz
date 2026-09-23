@@ -1,3 +1,34 @@
-{
-  color: red;
+body{
+    background-color:#1e1e2c;
+    color: rgba(255,255,255,1);
+    text-align: center;
+    font-family: 'Roboto Flex',sans-serif;
+
+}
+h1{
+    font-size: 6vw ;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.8em;
+    color: rgb(110, 60, 3);
+}
+p{
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.destacado{
+    font-weight: bold;
+    color:blue;
+
+}
+.etiqueta{
+    font-size: 80%;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color:darkorange;
+
+}
+.nota{
+
 }
