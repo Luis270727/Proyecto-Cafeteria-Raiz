@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Café Raíz</title>
+  <meta name="description" content="Café Raíz: café artesanal, repostería casera y encuentros culturales.">
+  <link rel="icon" href="../assets/icons/logouabcs.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Styles.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="marca" href="#inicio">Café Raíz</a>
+
+      <nav id="menu-principal" aria-label="Principal">
+        <ul>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#especialidades">Especialidades</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="acciones">
+        <button id="btn-tema" class="icono-btn" type="button" aria-label="Cambiar a modo oscuro">🌙</button>
+        <button id="btn-menu" class="icono-btn hamburguesa" type="button"
+                aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="portada" id="inicio">
+    <div class="portada-inner">
+      <div>
+        <h1>Café Raíz</h1>
+        <p>Café artesanal que vuelve al origen: una taza, una historia y un lugar para quedarse.</p>
+        <a class="boton" href="#menu">Ver el menú</a>
+      
+  </section>
+
+  <div class="contenedor">
+    <aside class="lateral">
+      <nav aria-label="Más sobre nosotros">
+        <h2>Conócenos</h2>
+        <ul>
+          <li><a href="#historia">Historia</a></li>
+          <li><a href="#eventos">Eventos</a></li>
+          <li><a href="#reservaciones">Reservaciones</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main>
+      <section id="menu">
+        <h2>Menú</h2>
+        <input type="search" id="buscador" class="buscador" placeholder="Buscar bebida…" aria-label="Buscar bebida">
+        <p id="sin-resultados" class="sin-resultados" hidden>No encontramos esa bebida.</p>
+        <ul class="menu-lista">
+          <li><strong>Capuchino</strong><span>Espresso, leche vaporizada y espuma cremosa.</span></li>
+          <li><strong>Latte</strong><span>Suave y con mucha leche, ideal para empezar el día.</span></li>
+          <li><strong>Té</strong><span>Infusión caliente, a tu elección.</span></li>
+          <li><strong>Expreso</strong><span>Corto, intenso y sin rodeos.</span></li>
+          <li><strong>Latte de caramelo</strong><span>Latte con caramelo casero.</span></li>
+          <li><strong>Americano</strong><span>Espresso alargado con agua caliente.</span></li>
+          <li><strong>Flat white</strong><span>Doble espresso con leche texturizada y fina.</span></li>
+        </ul>
+      </section>
+
+      <section id="especialidades">
+        <h2>Especialidades</h2>
+        <div class="especialidades">
+          <article>
+            <h3>Latte de vainilla artesanal</h3>
+            <p>Preparado con vainilla natural, sin jarabes industriales.</p>
+          </article>
+          <article>
+            <h3>Cold brew con notas cítricas</h3>
+            <p>Extracción en frío por horas, fresco y ligero.</p>
+          </article>
+          <article>
+            <h3>Repostería casera</h3>
+            <p>Pan de plátano y brownies, hechos cada mañana.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="historia" class="historia">
+        <h2>Historia de nuestro café</h2>
+        <article>
+          <h3>Introducción</h3>
+          <p>
+            En el corazón de la ciudad, entre calles empedradas y murales llenos de color, nació <strong>Café Raíz</strong>.
+            Sus fundadores soñaban con crear un espacio donde cada taza contara una historia.
+            El nombre “Raíz” surgió de la idea de volver al origen: rescatar la esencia del café artesanal y conectar a las personas con sus raíces.
+          </p>
+          <p>
+            Desde el primer día, la cafetería se convirtió en un refugio para estudiantes, profesionales y familias.
+            El local, decorado con madera rústica y detalles modernos, transmite equilibrio entre tradición y contemporaneidad.
+          </p>
+          <p id="eventos">
+            Con el tiempo, Café Raíz se transformó en un punto de encuentro cultural con <strong>lecturas de poesía</strong>,
+            <strong>conciertos acústicos</strong> y <strong>talleres de barismo</strong>.
+          </p>
+        </article>
+      </section>
+
+      <section id="reservaciones">
+        <h2>Reservaciones</h2>
+        <p>Escríbenos para apartar una mesa o preguntar por nuestros eventos.</p>
+      </section>
+
+      <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Dirección: <em>agrega aquí tu dirección</em><br>
+           Horario: <em>agrega aquí tu horario</em><br>
+           Teléfono o correo: <em>agrega aquí tu contacto</em></p>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <p style="margin:0 auto">© 2026 Café Raíz</p>
+  </footer>
+
+  <script src="../javascript/javascript.js"></script>
+</body>
+</html>

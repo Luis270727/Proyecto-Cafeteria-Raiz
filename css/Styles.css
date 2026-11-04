@@ -1,0 +1,444 @@
+/* ==========================================================
+   CAFÉ RAÍZ — Hoja de estilos
+   Orden del archivo:
+   1. Variables (colores y tipografías)
+   2. Base (reset y estilos generales)
+   3. Barra superior (con botones de tema y hamburguesa)
+   4. Portada
+   5. Estructura (menú lateral + contenido)
+   6. Menú de bebidas (con buscador)
+   7. Especialidades e historia
+   8. Pie de página
+   9. Responsive (pantallas pequeñas)
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   1. VARIABLES
+   Cambia un color aquí y se actualiza en toda la página.
+   ---------------------------------------------------------- */
+:root {
+  /* Colores de marca */
+  --raiz: #704104;        /* café original de los títulos */
+  --tostado: #2b1a0f;     /* café oscuro: barra, portada, pie */
+  --hoja: #4f6b4a;        /* verde para enlaces y detalles */
+
+  /* Colores de la página */
+  --fondo: #f6f5f1;       /* fondo general */
+  --papel: #ffffff;       /* fondo de tarjetas */
+  --texto: #2a211a;       /* texto principal */
+  --suave: #6b5f55;       /* texto secundario */
+  --linea: #e0dbd2;       /* bordes y separadores */
+
+  /* Tipografías */
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --sans: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* INTERACCIÓN 2 — Modo oscuro
+   El JS agrega la clase "oscuro" al <body> con classList.toggle().
+   Al redefinir las variables aquí, toda la página cambia de color. */
+body.oscuro {
+  --raiz: #d9a15c;
+  --hoja: #9fc297;
+  --fondo: #17120e;
+  --papel: #221a14;
+  --texto: #f0e9e0;
+  --suave: #b3a79a;
+  --linea: #3a2e25;
+}
+
+
+/* ----------------------------------------------------------
+   2. BASE
+   ---------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;   /* desplazamiento suave al usar enlaces #  */
+  scroll-padding-top: 5rem;  /* evita que la barra fija tape los títulos */
+}
+
+/* Respeta a quien desactiva las animaciones en su dispositivo */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  line-height: 1.65;
+  color: var(--texto);
+  background: var(--fondo);
+  transition: background 0.3s, color 0.3s;  /* cambio suave claro/oscuro */
+}
+
+a {
+  color: var(--hoja);
+}
+
+/* Contorno visible al navegar con el teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--raiz);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.6em;
+  font-family: var(--serif);
+  line-height: 1.15;
+  color: var(--raiz);
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.4rem);  /* mínimo, ideal, máximo */
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: var(--texto);
+}
+
+p {
+  max-width: 65ch;  /* líneas cómodas de leer */
+  margin: 0 0 1em;
+}
+
+
+/* ----------------------------------------------------------
+   3. BARRA SUPERIOR (fija al hacer scroll)
+   ---------------------------------------------------------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--tostado);
+  color: #fff;
+}
+
+.topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0.8rem 1.25rem;
+}
+
+.marca {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.topbar nav ul {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.topbar nav a {
+  padding: 0.25rem 0;
+  color: #eadfce;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.topbar nav a:hover {
+  color: #fff;
+  border-color: #d9a15c;
+}
+
+/* Grupo de botones (tema + hamburguesa) */
+.acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.icono-btn {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #5a4331;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.icono-btn:hover {
+  background: #4a3220;
+}
+
+/* INTERACCIÓN 1 — La hamburguesa solo se ve en pantallas pequeñas */
+.hamburguesa {
+  display: none;
+}
+
+
+/* ----------------------------------------------------------
+   4. PORTADA (título grande + foto)
+   ---------------------------------------------------------- */
+.portada {
+  background: var(--tostado);
+  color: #fff;
+}
+
+.portada-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;  /* texto un poco más ancho que la foto */
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) 1.25rem;
+}
+
+.portada h1 {
+  margin: 0 0 0.3em;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e8b878;
+}
+
+.portada p {
+  font-size: 1.15rem;
+  color: #eadfce;
+}
+
+.portada img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: #4a3220;  /* se ve mientras carga la imagen */
+  border-radius: 1.5rem 1.5rem 1.5rem 0.3rem;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 500;
+  color: var(--tostado);
+  text-decoration: none;
+  background: #e8b878;
+  border-radius: 999px;
+}
+
+.boton:hover {
+  background: #fff;
+}
+
+
+/* ----------------------------------------------------------
+   5. ESTRUCTURA (menú lateral a la izquierda + contenido)
+   ---------------------------------------------------------- */
+.contenedor {
+  display: grid;
+  grid-template-columns: 13rem 1fr;  /* lateral fijo, contenido flexible */
+  gap: 3rem;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 3rem 1.25rem;
+}
+
+.lateral {
+  position: sticky;
+  top: 5rem;
+  align-self: start;
+}
+
+.lateral h2 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--suave);
+}
+
+.lateral ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 2px solid var(--linea);
+}
+
+.lateral a {
+  display: block;
+  padding: 0.4rem 1rem;
+  color: var(--texto);
+  text-decoration: none;
+}
+
+.lateral a:hover {
+  margin-left: -2px;
+  color: var(--hoja);
+  border-left: 2px solid var(--hoja);
+}
+
+main section {
+  margin-bottom: 4rem;
+}
+
+
+/* ----------------------------------------------------------
+   6. MENÚ DE BEBIDAS
+   ---------------------------------------------------------- */
+
+/* INTERACCIÓN 3 — Campo de búsqueda */
+.buscador {
+  display: block;
+  width: 100%;
+  max-width: 24rem;
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  color: var(--texto);
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
+}
+
+.sin-resultados {
+  margin-top: 1.5rem;
+  color: var(--suave);
+}
+
+.menu-lista {
+  display: grid;
+  /* tantas columnas como quepan, cada una de 15rem como mínimo */
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem 2rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-lista li {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--linea);
+}
+
+/* El JS agrega "oculto" a las bebidas que no coinciden con la búsqueda */
+.menu-lista li.oculto {
+  display: none;
+}
+
+.menu-lista strong {
+  display: block;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+}
+
+.menu-lista span {
+  font-size: 0.95rem;
+  color: var(--suave);
+}
+
+
+/* ----------------------------------------------------------
+   7. ESPECIALIDADES E HISTORIA
+   ---------------------------------------------------------- */
+.especialidades {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.especialidades article {
+  padding: 1.5rem;
+  background: var(--papel);
+  border-left: 4px solid var(--hoja);
+  border-radius: 0.25rem 0.75rem 0.75rem 0.25rem;
+}
+
+.especialidades p {
+  margin: 0;
+  color: var(--suave);
+}
+
+.historia article {
+  margin-bottom: 2rem;
+}
+
+
+/* ----------------------------------------------------------
+   8. PIE DE PÁGINA
+   ---------------------------------------------------------- */
+footer {
+  padding: 2rem 1.25rem;
+  text-align: center;
+  color: #eadfce;
+  background: var(--tostado);
+}
+
+
+/* ----------------------------------------------------------
+   9. RESPONSIVE (pantallas de hasta 52rem ≈ 830px)
+   Las columnas pasan a una sola y el lateral se vuelve horizontal.
+   ---------------------------------------------------------- */
+@media (max-width: 52rem) {
+  .portada-inner,
+  .contenedor {
+    grid-template-columns: 1fr;
+  }
+
+  .lateral {
+    position: static;
+  }
+
+  .lateral ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+    border-left: 0;
+  }
+
+  .lateral a {
+    padding: 0.3rem 0;
+  }
+
+  /* INTERACCIÓN 1 — Menú hamburguesa */
+  .hamburguesa {
+    display: block;
+  }
+
+  .acciones {
+    order: 2;               /* botones a la derecha del logo */
+  }
+
+  .topbar nav {
+    display: none;          /* cerrado por defecto */
+    order: 3;
+    flex-basis: 100%;       /* ocupa todo el ancho, debajo del logo */
+  }
+
+  .topbar nav.abierto {     /* el JS agrega "abierto" con classList.toggle */
+    display: block;
+  }
+
+  .topbar nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

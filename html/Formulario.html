@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear cuenta</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <form id="formulario">
+
+            <h2>Crea tu cuenta</h2>
+
+            <p>Información de usuario</p>
+
+            <label for="usuario">Nombre de usuario:</label>
+            <input type="text" id="usuario" placeholder="Ingresa tu usuario" value="Luis Aaron" required>
+            <small>El nombre de usuario debe ser único.</small>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña" required>
+
+            <label for="correo">Correo electrónico:</label>
+            <input type="email" id="correo" placeholder="ejemplo@gmail.com" value="luisaaaronm_22@gmail.com" required>
+
+            <div class="terminos">
+                <input type="checkbox" id="acepto">
+                <label for="acepto">
+                    Acepto los términos del servicio
+                </label>
+            </div>
+
+            <label for="telefono">Teléfono (10 dígitos):</label>
+            <input type="tel" id="telefono" maxlength="10" placeholder="6120000000" value="6120000000" required>
+
+            <label for="ciudad">Ciudad de origen:</label>
+            <input list="ciudades" id="ciudad" placeholder="Selecciona o escribe..." required>
+
+            <datalist id="ciudades">
+                <option value="Ciudad Constitución">
+                <option value="La Paz">
+                <option value="Los Cabos">
+                <option value="Loreto">
+                <option value="Santa Rosalía">
+                <option value="Cabo San Lucas">
+                <option value="Comondú">
+            </datalist>
+
+            <button type="submit">Enviar datos</button>
+
+            <p class="nota">
+                Demostración: los datos no se envían a ningún servidor.
+            </p>
+
+            <div id="mensaje"></div>
+
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
