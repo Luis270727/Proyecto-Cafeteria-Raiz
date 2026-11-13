@@ -113,10 +113,6 @@ p {
   margin: 0 0 1em;
 }
 
-
-/* ----------------------------------------------------------
-   3. BARRA SUPERIOR (fija al hacer scroll)
-   ---------------------------------------------------------- */
 .topbar {
   position: sticky;
   top: 0;
@@ -248,11 +244,6 @@ p {
 .boton:hover {
   background: #fff;
 }
-
-
-/* ----------------------------------------------------------
-   5. ESTRUCTURA (menú lateral a la izquierda + contenido)
-   ---------------------------------------------------------- */
 .contenedor {
   display: grid;
   grid-template-columns: 13rem 1fr;  /* lateral fijo, contenido flexible */
@@ -441,4 +432,129 @@ footer {
     flex-direction: column;
     gap: 0.5rem;
   }
+}
+
+/* ----------------------------------------------------------
+   10. DATOS CON FETCH, FAVORITOS Y AVISOS
+   ---------------------------------------------------------- */
+
+/* Mensaje de carga y de error (ver javascript.js) */
+.estado {
+  margin-top: 1.5rem;
+  color: var(--suave);
+}
+
+.estado-error {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  color: var(--texto);
+  background: var(--papel);
+  border-left: 4px solid #b3412f;   /* rojo para distinguirlo de un aviso normal */
+  border-radius: 0.25rem 0.75rem 0.75rem 0.25rem;
+}
+
+.estado-error[hidden],
+.estado[hidden] {
+  display: none;
+}
+
+.estado-error p {
+  margin: 0 0 0.75rem;
+}
+
+.btn-reintentar {
+  padding: 0.5rem 1.1rem;
+  font: inherit;
+  color: var(--tostado);
+  background: #e8b878;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-reintentar:hover {
+  background: var(--raiz);
+  color: #fff;
+}
+
+/* Tarjetas del menú */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.25rem;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 0.75rem;
+}
+
+.tarjeta[hidden] {
+  display: none;   /* el buscador oculta tarjetas con el atributo hidden */
+}
+
+.tarjeta h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--raiz);
+}
+
+.tarjeta p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--suave);
+}
+
+.tarjeta-pie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;      /* empuja el precio y el corazón al fondo */
+  padding-top: 0.75rem;
+}
+
+.precio {
+  font-weight: 500;
+}
+
+.btn-fav {
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  background: transparent;
+  border: 1px solid var(--linea);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btn-fav:hover {
+  border-color: var(--raiz);
+}
+
+.btn-fav[aria-pressed="true"] {
+  background: var(--linea);
+}
+
+/* Lista de favoritos */
+.favoritos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.favoritos-lista li {
+  padding: 0.35rem 0.9rem;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 999px;
 }

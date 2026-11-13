@@ -39,7 +39,9 @@
         <h1>Café Raíz</h1>
         <p>Café artesanal que vuelve al origen: una taza, una historia y un lugar para quedarse.</p>
         <a class="boton" href="#menu">Ver el menú</a>
-      
+      </div>
+      <img src="../img/Latte.png" alt="Latte con arte de corazón en espuma">
+    </div>
   </section>
 
   <div class="contenedor">
@@ -47,6 +49,7 @@
       <nav aria-label="Más sobre nosotros">
         <h2>Conócenos</h2>
         <ul>
+          <li><a href="#favoritos">Favoritos</a></li>
           <li><a href="#historia">Historia</a></li>
           <li><a href="#eventos">Eventos</a></li>
           <li><a href="#reservaciones">Reservaciones</a></li>
@@ -59,15 +62,18 @@
         <h2>Menú</h2>
         <input type="search" id="buscador" class="buscador" placeholder="Buscar bebida…" aria-label="Buscar bebida">
         <p id="sin-resultados" class="sin-resultados" hidden>No encontramos esa bebida.</p>
-        <ul class="menu-lista">
-          <li><strong>Capuchino</strong><span>Espresso, leche vaporizada y espuma cremosa.</span></li>
-          <li><strong>Latte</strong><span>Suave y con mucha leche, ideal para empezar el día.</span></li>
-          <li><strong>Té</strong><span>Infusión caliente, a tu elección.</span></li>
-          <li><strong>Expreso</strong><span>Corto, intenso y sin rodeos.</span></li>
-          <li><strong>Latte de caramelo</strong><span>Latte con caramelo casero.</span></li>
-          <li><strong>Americano</strong><span>Espresso alargado con agua caliente.</span></li>
-          <li><strong>Flat white</strong><span>Doble espresso con leche texturizada y fina.</span></li>
-        </ul>
+        <p id="estado-carga" class="estado" role="status" hidden>Cargando el menú…</p>
+        <div id="estado-error" class="estado-error" role="alert" hidden>
+          <p id="texto-error"></p>
+          <button id="btn-reintentar" class="btn-reintentar" type="button">Reintentar</button>
+        </div>
+        <div id="menu-tarjetas" class="tarjetas"></div>
+      </section>
+
+      <section id="favoritos">
+        <h2>Mis favoritos</h2>
+        <p id="sin-favoritos" class="sin-resultados">Aún no tienes favoritos. Toca el ♡ en una bebida del menú.</p>
+        <ul id="lista-favoritos" class="favoritos-lista"></ul>
       </section>
 
       <section id="especialidades">
@@ -126,6 +132,7 @@
     <p style="margin:0 auto">© 2026 Café Raíz</p>
   </footer>
 
+  <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
   <script src="../javascript/javascript.js"></script>
 </body>
 </html>
